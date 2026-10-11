@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #fbfaf8;
+  --color-surface: #ffffff;
+  --color-ink: #1f2937;
+  --color-muted: #6b7280;
+  --color-hairline: #e8e3dc;
+  --color-accent: #4f7fd1;
+  --color-accent-bg: #eef3fb;
+  --color-warm: #f7ede2;
+  --color-go: #2e7d5b;
+  --font-sans: var(--font-inter), Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+button,
+a,
+input,
+textarea {
+  font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.mascot-live {
+  position: relative;
+  margin-inline: auto;
+}
+
+.mascot-live::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 54%;
+  z-index: -1;
+  width: 150%;
+  height: 150%;
+  transform: translate(-50%, -52%);
+  background: radial-gradient(circle, #edf4fd 0%, #edf4fd 34%, rgba(237, 244, 253, 0) 68%);
+}
+
+.mascot-live img {
+  width: 100%;
+  height: auto;
+  -webkit-mask-image: radial-gradient(ellipse 70% 62% at 50% 54%, #000 46%, transparent 72%);
+  mask-image: radial-gradient(ellipse 70% 62% at 50% 54%, #000 46%, transparent 72%);
+}
+
+.mascot-live .mascot-still {
+  display: none;
+}
+
+.mascot-live .mascot-move,
+.mascot-live .mascot-move img {
+  display: block;
+}
+
+.mascot-live.is-listening img {
+  filter: drop-shadow(0 10px 18px rgba(79, 127, 209, 0.28));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mascot-live .mascot-move {
+    display: none;
+  }
+
+  .mascot-live .mascot-still {
+    display: block;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.guardian-portrait {
+  width: 100%;
+  height: auto;
+  -webkit-mask-image: radial-gradient(ellipse 82% 74% at 50% 46%, #000 50%, transparent 78%);
+  mask-image: radial-gradient(ellipse 82% 74% at 50% 46%, #000 50%, transparent 78%);
+}
+
+.rise-in {
+  animation: rise-in 400ms ease both;
+}
